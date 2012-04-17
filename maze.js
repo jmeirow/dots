@@ -14,12 +14,27 @@
 
 
 	 
+	function start() {
+
+		make_all_white();
+		oSelect = document.getElementById('depth');
+		oSelect.value =   'SELECT';
+		var msg = document.getElementById('msg');
+		msg.innerHTML = 'Select the "Challenges Count"';
+
+	}
+
 	function reset() {
 
 		make_all_white();
 		oSelect = document.getElementById('depth');
 		oSelect.value =   'SELECT';
+		var msg = document.getElementById('msg');
+		msg.innerHTML = 'Game Over!';
+
 	}
+
+ 
 
 	function init(selectObj) { 
 
@@ -36,14 +51,11 @@
 		depth_list = new Array(parseInt(which));
 
 		for (i = 0; i < depth_list.length; i++) {
-			depth_list[i] = Math.floor(Math.random()*4)
-			alert('i = ' + i + ' value  = ' + depth_list[i]);
+			depth_list[i] = getRandomizer(1,4);
+			 
 		}
 
- 		
-
 		ptr = 0;
-
 		next();
 
 
@@ -58,14 +70,18 @@
 
 	}
 
-	 
+	function getRandomizer(a,b) {
+	     
+	        return (Math.floor( Math.random()* (1+b-a) ) ) + a;
+	     
+	} 
 
 
 
 	function next() {
 
-		
-	 
+		if (MODE == 'FOLLOW') 
+			return;
 		
 		if (MODE == 'SHOW' ) {
 			if (ptr < depth_list.length )  {
@@ -75,16 +91,20 @@
 
 				make_red(selector);
 				ptr++;
-				return;
+				
 			}
-		} 
-		var btn = document.getElementById('next');
-		btn.enabled = false;
-		MODE = 'FOLLOW'	;	
-		ptr = 0;
-		var †oMsg = document.getElementById('msg');
-		oMsg.text =   'OK, now click the circles in the same order that the red dot appeared.';
+			else {
+				var btn = document.getElementById('next');
+				btn.enabled = false;
+				MODE = 'FOLLOW'	;	
+				ptr = 0;
+				var oMsg = document.getElementById('msg');
+				make_all_white();
+				//alert( 'OK, now click the circles in the same order that the red dot appeared.');
+			}
+		}
 	}
+
 
  
 	 
@@ -104,38 +124,20 @@
 	}
 
  
-	function top_clicked() {
-		if (depth_list[ptr] == 1)
-			msg.value = 'Correct!';
+	function clicked(val) {
+		 
+		var msg = document.getElementById('msg');
+		if (depth_list[ptr] == parseInt(val))
+			if (ptr == depth_list.length - 1)
+				msg.innerHTML = "Game Over! You Won!!!";
+			else
+				msg.innerHTML = 'Correct! (' + (ptr + 1) + ')' ;
 		else
-			msg.value = 'YOU LOSE!';
+			msg.innerHTML = 'You LOSE!!!';
 		ptr++;
 		 
 	}
-	function bottom_clicked() {
-		if (depth_list[ptr] == 3)
-			msg.value = 'Correct!';
-		else
-			msg.value = 'YOU LOSE!';
-		ptr++;
-	}
-
-	function right_clicked() {
-		if (depth_list[ptr] == 4)
-			msg.value = 'Correct!';
-		else
-			msg.value = 'YOU LOSE!';
-		ptr++;
-	}
-
-	function left_clicked() {
-		if (depth_list[ptr] == 2)
-			msg.value = 'Correct!';
-		else
-			msg.value = 'YOU LOSE!';
-		ptr++;
-	}
-
+	 
 	function make_red(position) {
 
 

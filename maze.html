@@ -11,7 +11,7 @@
 
 
 
-	<body   >
+	<body  onload='javascript:start()'  >
 
 	
 		 
@@ -23,19 +23,19 @@
 
 				<tr>
 					<td width=200px> 					</td>
-					<td width=200px> <img id='top' height='200px' width='200px' img='white.png' onclick='javascript:top_clicked();' />  </td>
+					<td width=200px> <img id='top' height='200px' width='200px' img='white.png' onclick='javascript:clicked(1)' />  </td>
 					<td width=200px>    				</td>
 				</tr>
 
 				<tr>
-					<td><img id='left' height='200px' width='200px'  img='white.png' onclick='javascript:right_clicked();' />			</td>
+					<td><img id='left' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(4)' />			</td>
 					<td height=200px>	 			</td>
-					<td>	<img id='right' height='200px' width='200px'  img='white.png' onclick='javascript:right_clicked();' />		</td>
+					<td>	<img id='right' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(2)' />		</td>
 				</tr>
 
 				<tr>
 					<td>								</td>
-					<td><img id='bottom' height='200px' width='200px'  img='white.png' onclick='javascript:bottom_clicked();' /> 			</td>
+					<td><img id='bottom' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(3)' /> 			</td>
 					<td>								</td>
 				</tr>				
 
@@ -47,13 +47,25 @@
 
 
 
-		<label id='msg' style='width:400px;background-color:yellow'></label><br/>
-		<select type='select' width='20px' id='depth' onchange='javascript:init(this)' >
+		<label id='msg' style='width:400px;font-size:20pt'></label><br/>
+		Challenges Count: <select type='select' width='20px' id='depth' onchange='javascript:init(this)' >
 				<option>SELECT</option>
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
 				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+
 		</select><br/><br/><br/>
 		
 
