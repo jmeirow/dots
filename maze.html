@@ -11,7 +11,7 @@
 
 
 
-	<body  >
+	<body onload='javascript:reset();' >
 
 	
 		 
@@ -23,19 +23,19 @@
 
 				<tr>
 					<td width=200px> 					</td>
-					<td width=200px> <img id='top' height='50px' width='50px' img='white.png' onclick='javascript:top_clicked();' />  </td>
+					<td width=200px> <img id='top' height='200px' width='200px' img='white.png' onclick='javascript:top_clicked();' />  </td>
 					<td width=200px>    				</td>
 				</tr>
 
 				<tr>
-					<td><img id='left' height='50px' width='50px'  img='white.png' onclick='javascript:right_clicked();' />			</td>
+					<td><img id='left' height='200px' width='200px'  img='white.png' onclick='javascript:right_clicked();' />			</td>
 					<td height=200px>	 			</td>
-					<td>	<img id='right' height='50px' width='50px'  img='white.png' onclick='javascript:right_clicked();' />		</td>
+					<td>	<img id='right' height='200px' width='200px'  img='white.png' onclick='javascript:right_clicked();' />		</td>
 				</tr>
 
 				<tr>
 					<td>								</td>
-					<td><img id='bottom' height='50px' width='50px'  img='white.png' onclick='javascript:bottom_clicked();' /> 			</td>
+					<td><img id='bottom' height='200px' width='200px'  img='white.png' onclick='javascript:bottom_clicked();' /> 			</td>
 					<td>								</td>
 				</tr>				
 
@@ -46,8 +46,21 @@
 
 
 
-		<input type='button' value='start' onclick='javascript:start()' />
-		<input type='button' value='reset' onclick='javascript:reset()' />
+
+		<label id='msg' style='width:400px;background-color:yellow'></label><br/>
+		<select type='select' width='20px' id='depth' onchange='javascript:init(this)' >
+				<option>SELECT</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+		</select><br/><br/><br/>
+		
+
+		<input type='button' id='next' value='next' onclick='javascript:next()' /><br/><br/><br/>
+
+		<input type='button' value='reset' onclick='javascript:reset()' /><br/>
+
 
 
 
