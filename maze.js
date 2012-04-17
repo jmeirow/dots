@@ -14,6 +14,12 @@
 
 
 	 
+	function reset() {
+
+		make_all_white();
+		oSelect = document.getElementById('depth');
+		oSelect.value =   'SELECT';
+	}
 
 	function init(selectObj) { 
 
@@ -28,12 +34,13 @@
 		 
 		MODE = 'SHOW';
 		depth_list = new Array(parseInt(which));
+
 		for (i = 0; i < depth_list.length; i++) {
 			depth_list[i] = Math.floor(Math.random()*4)
-			//alert('i = ' + i + ' value  = ' + depth_list[i]);
+			alert('i = ' + i + ' value  = ' + depth_list[i]);
 		}
 
- 
+ 		
 
 		ptr = 0;
 
@@ -75,7 +82,7 @@
 		btn.enabled = false;
 		MODE = 'FOLLOW'	;	
 		ptr = 0;
-		var oMsg = document.getElementById('msg');
+		var †oMsg = document.getElementById('msg');
 		oMsg.text =   'OK, now click the circles in the same order that the red dot appeared.';
 	}
 
@@ -83,12 +90,6 @@
 	 
 
 
-	function reset() {
-
-		make_all_white();
-		oSelect = document.getElementById('depth');
-		oSelect.value =   'SELECT';
-	}
 
 	function make_all_white() {
 		var oImg = document.getElementById('bottom');
