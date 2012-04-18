@@ -12,9 +12,21 @@
 
 	var MODE = '';
 
+	var msg  
+	var oSelect = document.getElementById('depth');
+
+
+
+	function initialize_selectors() {
+		var msg = document.getElementById('msg');
+		var oSelect = document.getElementById('depth');
+	}
 
 	 
 	function start() {
+
+
+		initialize_selectors();
 
 		make_all_white();
 		oSelect = document.getElementById('depth');
@@ -27,9 +39,9 @@
 	function reset() {
 
 		make_all_white();
-		oSelect = document.getElementById('depth');
+	 
 		oSelect.value =   'SELECT';
-		var msg = document.getElementById('msg');
+		 
 		msg.innerHTML = 'Game Over!';
 
 	}
