@@ -3,7 +3,6 @@
 
  
 	 
-	var depth_list;
 
 	var TOP = 1;
 	var RIGHT = 2;
@@ -12,51 +11,39 @@
 
 	var MODE = '';
 
-	var msg  
-	var oSelect = document.getElementById('depth');
+	var depth_list;
 
+	var msg 		;
+	var oSelect ;
+	var nextButton ;
+	var bottomImg ;
+	var topImg ;
+	var leftImg ;
+	var rightImg ;
 
 
 	function initialize_selectors() {
-		var msg = document.getElementById('msg');
-		var oSelect = document.getElementById('depth');
-	}
-
-	 
-	function start() {
-
-
-		initialize_selectors();
-
-		make_all_white();
+	  	msg = document.getElementById('msg');
 		oSelect = document.getElementById('depth');
-		oSelect.value =   'SELECT';
-		var msg = document.getElementById('msg');
-		msg.innerHTML = 'Select the "Challenges Count"';
+		nextButton = document.getElementById('next');
+		bottomImg = document.getElementById('bottom');
+		topImg = document.getElementById('top');
+		leftImg = document.getElementById('left');
+		rightImg = document.getElementById('right');
 
 	}
 
-	function reset() {
-
-		make_all_white();
 	 
-		oSelect.value =   'SELECT';
-		 
-		msg.innerHTML = 'Game Over!';
 
-	}
 
  
 
 	function init(selectObj) { 
 
-		var btn = document.getElementById('next');
-		btn.enabled = true;
+		nextButton.enabled = true;
 
- 	  
- 		var idx = selectObj.selectedIndex; 
- 		 
- 		var which = selectObj.options[idx].value; 
+ 		var idx = oSelect.selectedIndex; 
+ 		var which = oSelect.options[idx].value; 
  	
 		 
 		MODE = 'SHOW';
@@ -70,23 +57,31 @@
 		ptr = 0;
 		next();
 
-
-		// set the MODE to SHOW
-		// get the depth
-		// create an array that length
-		// loop through the array and set the entry to a random number between 1 and 4
-		// set the MODE to FOLLOW
-		// set the ptr to first element
-		// display message to click the circle that was red first.
-
-
 	}
 
 	function getRandomizer(a,b) {
-	     
-	        return (Math.floor( Math.random()* (1+b-a) ) ) + a;
-	     
+
+		return (Math.floor( Math.random()* (1+b-a) ) ) + a;
+
 	} 
+
+
+
+	function start() {
+
+		initialize_selectors();
+		make_all_white();
+		oSelect.value =   'SELECT';
+		msg.innerHTML = 'Select the "Challenges Count"';
+	}
+
+	function reset() {
+
+		make_all_white();
+		oSelect.value =   'SELECT';
+		msg.innerHTML = 'Game Over!';
+
+	}
 
 
 
@@ -106,11 +101,11 @@
 				
 			}
 			else {
-				var btn = document.getElementById('next');
-				btn.enabled = false;
+				 
+				nextButton.enabled = false;
 				MODE = 'FOLLOW'	;	
 				ptr = 0;
-				var oMsg = document.getElementById('msg');
+				 
 				make_all_white();
 				//alert( 'OK, now click the circles in the same order that the red dot appeared.');
 			}
@@ -124,15 +119,11 @@
 
 
 	function make_all_white() {
-		var oImg = document.getElementById('bottom');
-		oImg.setAttribute('src', 'images/white.png');
-		oImg = document.getElementById('top');
-		oImg.setAttribute('src', 'images/white.png');
-		oImg = document.getElementById('left');
-		oImg.setAttribute('src', 'images/white.png');
-		oImg = document.getElementById('right');
-		oImg.setAttribute('src', 'images/white.png');
-
+		
+		bottomImg.setAttribute('src', 'images/white.png');
+		topImg.setAttribute('src', 'images/white.png');
+		leftImg.setAttribute('src', 'images/white.png');
+		rightImg.setAttribute('src', 'images/white.png');
 	}
 
  
@@ -182,44 +173,36 @@
 	}
 
 	function put_green_top() {
-		var oImg = document.getElementById('top')
-		oImg.setAttribute('src', 'images/green.png');
+		topImg.setAttribute('src', 'images/green.png');
 	}
 
 
 	function put_green_bottom() {
-		var oImg = document.getElementById('bottom')
-		oImg.setAttribute('src', 'images/green.png');
+		bottomImg.setAttribute('src', 'images/green.png');
 	}
 
 	function put_green_left() {
-		var oImg = document.getElementById('left')
-		oImg.setAttribute('src', 'images/green.png');
+		leftImg.setAttribute('src', 'images/green.png');
 	}	
 
 
  	function put_green_right() {
-		var oImg = document.getElementById('right')
-		oImg.setAttribute('src', 'images/green.png');
+		rightImg.setAttribute('src', 'images/green.png');
 	}
 
 
 	function put_red_right() {
-		var oImg = document.getElementById('right')
-		oImg.setAttribute('src', 'images/red.png');
+		rightImg.setAttribute('src', 'images/red.png');
 	}
 
 	function put_red_left() {
-		var oImg = document.getElementById('left')
-		oImg.setAttribute('src', 'images/red.png');
+		leftImg.setAttribute('src', 'images/red.png');
 	}
 
 	function put_red_top() {
-		var oImg = document.getElementById('top')
-		oImg.setAttribute('src', 'images/red.png');
+		topImg.setAttribute('src', 'images/red.png');
 	}
 
 	function put_red_bottom() {
-		var oImg = document.getElementById('bottom')
-		oImg.setAttribute('src', 'images/red.png');
+		bottomImg.setAttribute('src', 'images/red.png');
 	}
