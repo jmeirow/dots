@@ -20,6 +20,14 @@
 	var topImg ;
 	var leftImg ;
 	var rightImg ;
+	var tbl ;
+	var level;
+	var row ;
+
+	
+
+
+
 
 
 	function initialize_selectors() {
@@ -30,11 +38,27 @@
 		topImg = document.getElementById('top');
 		leftImg = document.getElementById('left');
 		rightImg = document.getElementById('right');
+		tbl = document.getElementById('tbl');
+
 
 	}
 
 	 
+	function  insert() {
+		row = tbl.insertRow(-1);
+		var col1 = row.insertCell(0);
+		var col2 = row.insertCell(1);
+		var col3 = row.insertCell(2);
+		col1.innerHTML = "I am ";
+		col2.innerHTML = "a new";
+		col3.innerHTML = "column";
+		level++;
+	}
 
+	// function delete() {
+
+
+	// }
 
  
 
@@ -53,6 +77,8 @@
 			depth_list[i] = getRandomizer(1,4);
 			 
 		}
+
+		level = 0;
 
 		ptr = 0;
 		next();

@@ -3,87 +3,82 @@
 
 	<head>
 
-	
+
 	<script src="maze.js"></script>
 
 	</head>
 
-
-
-
 	<body  onload='javascript:start()'  >
 
-	
-		 
 
+	<div style='margin-left:200px'>
 
-		<div style='margin-left:200px'>
+		<table>
 
-			<table>
-
-				<tr>
-					<td width=200px> 					</td>
-					<td width=200px> <img id='top' height='200px' width='200px' img='white.png' onclick='javascript:clicked(1)' />  </td>
-					<td width=200px>    				</td>
-				</tr>
-
-				<tr>
-					<td><img id='left' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(4)' />			</td>
-					<td height=200px>	 			</td>
-					<td>	<img id='right' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(2)' />		</td>
-				</tr>
-
-				<tr>
-					<td>								</td>
-					<td><img id='bottom' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(3)' /> 			</td>
-					<td>								</td>
-				</tr>				
-
-
-			</table>
-
-		</div>
-		<div style='float:right' id='score_table'>
-			<tr id='row_01'>
-				<td ><label id='level_01'></label></td>
-				<td ><label id='attempts_01'></label></td>
-				<td ><label id='success_01'></label></td>
+			<tr>
+				<td width=200px> 					</td>
+				<td width=200px> <img id='top' height='200px' width='200px' img='white.png' onclick='javascript:clicked(1)' />  </td>
+				<td width=200px>    				</td>
 			</tr>
+
+			<tr>
+				<td><img id='left' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(4)' />			</td>
+				<td height=200px>	 			</td>
+				<td>	<img id='right' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(2)' />		</td>
+			</tr>
+
+			<tr>
+				<td>								</td>
+				<td><img id='bottom' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(3)' /> 			</td>
+				<td>								</td>
+			</tr>				
+
 
 		</table>
 
+	</div>
+	<div style='float:right' id='score_table'>
+		<table id='tbl'>
+			<tr id='row_01'>
+				<td ><label id='r_01_c_01'>aaa</label></td>
+				<td ><label id='r_01_c_02'>bbb</label></td>
+				<td ><label id='r_01_c_03'>ccc</label></td>
+			</tr>
+
+		</table>
+	</div>
 
 
-		<label id='msg' style='width:400px;font-size:20pt'></label><br/>
-		Challenges Count: <select type='select' width='20px' id='depth'    >
-				<option>SELECT</option>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-				<option>9</option>
-				<option>10</option>
-				<option>11</option>
-				<option>12</option>
-				<option>13</option>
-				<option>14</option>
-				<option>15</option>
+	<label id='msg' style='width:400px;font-size:20pt'></label><br/>
+	Challenges Count: <select type='select' width='20px' id='depth'    >
+			<option>SELECT</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+			<option>6</option>
+			<option>7</option>
+			<option>8</option>
+			<option>9</option>
+			<option>10</option>
+			<option>11</option>
+			<option>12</option>
+			<option>13</option>
+			<option>14</option>
+			<option>15</option>
 
-		</select><br/><br/><br/>
-		
-
-		<input type='button' id='start' value='start' onclick='javascript:init()' /> 
-		<input type='button' id='next' value='next' onclick='javascript:next()' />
-		<input type='button' value='reset' onclick='javascript:reset()' />
+	</select><br/><br/><br/>
 
 
-
+	<input type='button' id='start' value='start' onclick='javascript:init()' /> 
+	<input type='button' id='next' value='next' onclick='javascript:next()' />
+	<input type='button' value='reset' onclick='javascript:reset()' />
+	<input type='button' value='insert' onclick='javascript:insert()' />
+	<input type='button' value='delete' onclick='javascript:delete()' />
 
 
 
 	</body>
+
 </html>
