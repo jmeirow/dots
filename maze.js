@@ -11,8 +11,6 @@
 
 	var MODE = '';
 
-	var depth_list;
-
 	var msg 		;
 	var oSelect ;
 	var nextButton ;
@@ -27,7 +25,9 @@
 	var levels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 	var level = 0;
 
-	consec_wins = 0;
+	var consec_wins = 0;
+	var game;
+
 
 
 
@@ -36,15 +36,13 @@
 
 	function initialize_selectors() {
 	  	msg = document.getElementById('msg');
-		oSelect = document.getElementById('depth');
+		//oSelect = document.getElementById('depth');
 		nextButton = document.getElementById('next');
 		bottomImg = document.getElementById('bottom');
 		topImg = document.getElementById('top');
 		leftImg = document.getElementById('left');
 		rightImg = document.getElementById('right');
 		tbl = document.getElementById('tbl');
-
-
 	}
 
 	 
@@ -59,56 +57,46 @@
 		level++;
 	}
 
-	// function delete() {
-
-
-	// }
-
- 
 
 	function init(selectObj) { 
 
-		nextButton.enabled = true;
-
- 		var idx = oSelect.selectedIndex; 
- 		var which = oSelect.options[idx].value; 
- 	
-		 
-		MODE = 'SHOW';
-		depth_list = new Array(parseInt(which));
-
-		for (i = 0; i < depth_list.length; i++) {
-			depth_list[i] = getRandomizer(1,4);
-			 
-		}
-
+		initialize_selectors();
+		make_all_white();
+		
+		msg.innerHTML = 'Select the "Challenges Count"';
 		level = 0;
-
-		ptr = 0;
-		next();
-
+		start();
 	}
 
 	function getRandomizer(a,b) {
-
 		return (Math.floor( Math.random()* (1+b-a) ) ) + a;
-
 	} 
 
 
 
 	function start() {
 
-		initialize_selectors();
-		make_all_white();
-		oSelect.value =   'SELECT';
-		msg.innerHTML = 'Select the "Challenges Count"';
+		nextButton.enabled = true;
+
+		MODE = 'SHOW';
+		game = new Array(parseInt(levels[level]));
+
+		for (i = 0; i < levels[level]; i++) {
+			game[i] = getRandomizer(1,4);
+		}
+
+		level = 0;
+
+		ptr = 0;
+		
+		msg.innerHTML = "You are on Level 1"
+		next();
 	}
 
 	function reset() {
 
 		make_all_white();
-		oSelect.value =   'SELECT';
+		//oSelect.value =   'SELECT';
 		msg.innerHTML = 'Game Over!';
 
 	}
@@ -121,13 +109,16 @@
 			return;
 		
 		if (MODE == 'SHOW' ) {
-			if (ptr < depth_list.length )  {
+			if (ptr < game.length )  {
 
 				make_all_green();
-				var selector = depth_list[ptr];
+				var selector = game[ptr];
 
 				make_red(selector);
+
 				ptr++;
+
+
 				
 			}
 			else {
@@ -144,7 +135,14 @@
 
 
  
-	 
+	 function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 
 
 
@@ -160,11 +158,22 @@
 	function clicked(val) {
 		 
 		var msg = document.getElementById('msg');
-		if (depth_list[ptr] == parseInt(val))
-			if (ptr == depth_list.length - 1)
-				msg.innerHTML = "Game Over! You Won!!!";
-			else
+		if (game[ptr] == parseInt(val))
+			if (ptr == game.length - 1) {
+				msg.innerHTML = "Good show!";
+				if (++consec_wins == 3) {
+					consec_wins = 1;
+					level++;
+				}
+				else {
+					next();
+				}
+
+			}
+			else {
 				msg.innerHTML = 'Correct! (' + (ptr + 1) + ')' ;
+				next();
+			}
 		else
 			msg.innerHTML = 'You LOSE!!!';
 		ptr++;
@@ -191,6 +200,11 @@
 			put_red_left();
 			return;
 		}
+
+		sleep(10);
+		sleep(10);
+		sleep(10);
+		make_all_white();	
 	}
 
 
