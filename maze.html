@@ -3,53 +3,63 @@
 
 	<head>
 
-
+	 
+	
 	<script src="maze.js"></script>
+
 
 	</head>
 
 	<body  onload='javascript:init()'  >
 
+	 
+				<div id='greenlights'>
+					<img id='green_1'   width='25px'  src='images/green.png'/>
+					<img id='green_2'   width='25px'  src='images/green.png'/>
+					<img id='green_3'   width='25px'  src='images/green.png'/>
+				</div>
+				
 
-	<div style='margin-left:200px'>
+	<table><tr><td  style='font-size:20pt;font-family:arial,helvetica' id='current_level'></td></tr></table>
 
-		<table>
+	<div style='margin-left:150px'>
 
-			<tr>
-				<td width=200px> 					</td>
-				<td width=200px> <img id='top' height='200px' width='200px' img='white.png' onclick='javascript:clicked(1)' />  </td>
-				<td width=200px>    				</td>
-			</tr>
+		
 
-			<tr>
-				<td><img id='left' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(4)' />			</td>
-				<td height=200px>	 			</td>
-				<td>	<img id='right' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(2)' />		</td>
-			</tr>
+		<div id='images'>
+			<table>
 
-			<tr>
-				<td>								</td>
-				<td><img id='bottom' height='200px' width='200px'  img='white.png' onclick='javascript:clicked(3)' /> 			</td>
-				<td>								</td>
-			</tr>				
+				<tr>
+					<td width='150px'></td>
+					<td width='150px'><img id='top' height='150px' width='150px' img='white.png' onclick='javascript:clicked(0)' />  </td>
+					<td width='150px'></td>
+				</tr>
+
+				<tr>
+					<td><img id='left' height='150px' width='150px'  img='white.png' onclick='javascript:clicked(3)' /></td>
+					<td height=150px align=center>	<label id='message' style='width:200px;font-size:20pt;text-align:center'></label></td>
+					<td><img id='right' height='150px' width='150px'  img='white.png' onclick='javascript:clicked(1)' /></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><img id='bottom' height='150px' width='150px'  img='white.png' onclick='javascript:clicked(2)' /></td>
+					<td></td>
+				</tr>				
 
 
-		</table>
+			</table>
+		</div>
+	 
+	
+	
+
 
 	</div>
-	<div style='float:right' id='score_table'>
-		<table id='tbl'>
-			<tr id='row_01'>
-				<td ><label id='r_01_c_01'>aaa</label></td>
-				<td ><label id='r_01_c_02'>bbb</label></td>
-				<td ><label id='r_01_c_03'>ccc</label></td>
-			</tr>
-
-		</table>
-	</div>
 
 
-	<label id='msg' style='width:400px;font-size:20pt'></label><br/>
+
+
 <!-- 	Challenges Count: <select type='select' width='20px' id='depth'    >
 			<option>SELECT</option>
 			<option>1</option>
@@ -71,12 +81,10 @@
 	</select><br/><br/><br/> -->
 
 
-	<input type='button' id='start' value='start' onclick='javascript:init()' /> 
-	<input type='button' id='next' value='next' onclick='javascript:next()' />
-	<input type='button' value='reset' onclick='javascript:reset()' />
-	<input type='button' value='insert' onclick='javascript:insert()' />
-	<input type='button' value='delete' onclick='javascript:delete()' />
 
+
+
+	
 
 
 	</body>
