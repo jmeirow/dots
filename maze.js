@@ -61,8 +61,9 @@
 	*/
 
 
-	 
-
+	var click_cnt_msg;
+	var click_cnt = 0;
+	var between_game_interval = 1250;
 	var TOP = 0;
 	var RIGHT = 1;
 	var BOTTOM = 2;
@@ -76,6 +77,7 @@
 	var rightImg ;
 	var tbl ;
 	var row ;
+	var games =  [2,2,3,3,3,3,3,3,3,3 , 3, 3, 3, 3, 3];
 	var levels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 	var level = 0;
 	var consec_wins = 0;
@@ -89,14 +91,14 @@
 
 	function initialize_selectors() {
 		
-
+		
 		green_lights = new Array(3);
 		green_lights[0] = document.getElementById('green_1');
 		green_lights[1] = document.getElementById('green_2');
 		green_lights[2] = document.getElementById('green_3');
 		make_green_invisible();
-  	msg = document.getElementById('message');
-  	currlvl = document.getElementById('current_level');
+  		msg = document.getElementById('message');
+  		currlvl = document.getElementById('current_level');
 		nextButton = document.getElementById('next');
 		bottomImg = document.getElementById('bottom');
 		topImg = document.getElementById('top');
@@ -108,6 +110,7 @@
 		images[BOTTOM] = bottomImg;
 		images[LEFT] = leftImg;
 		interval_in_milliseconds = 500;
+		click_cnt_msg = document.getElementById('click_count_message');
 	}
 
 	function init() { 
@@ -117,7 +120,8 @@
 		level = 0;
 		ptr = 0;
 		currlvl.innerHTML = 'Working on Level: 1'
-		setTimeout(start,2000);
+		click_cnt_msg.innerHTML = 'Click Count: 0';
+		setTimeout(start,between_game_interval );
 	}
 
 	function getRandomizer(a,b) {
@@ -129,7 +133,7 @@
 
 
 		
-
+		 
 		msg.innerHTML = '';
 
 		// set the game in SHOW mode (the computer is active...)
@@ -211,6 +215,8 @@
 	}
 
 	function clicked(val) {
+		click_cnt++;
+		click_cnt_msg.innerHTML = 'Click Count: ' + click_cnt;
 
 		// The user has clicked!
 		if (MODE == 'SHOW') {
@@ -248,15 +254,15 @@
 
 		make_green_visible(consec_wins);
 
-		if (++consec_wins == 3) {
+		if (++consec_wins == games[ptr]) {
 			msg.innerHTML = "Way to go!";
 			currlvl.innerHTML = 'Working on Level: '  + (level + 2);
 			last_game_of_round();
-			setTimeout(start, 2000);
+			setTimeout(start, between_game_interval);
 		} else {
 			 
 
-			setTimeout(start, 2000);
+			setTimeout(start, between_game_interval);
 		}
 	}
 
@@ -286,13 +292,13 @@
 			msg.innerHTML = 'You LOSE!!! <br/> Back to Level ' + (level+1) + ' for you!'
 			consec_wins = 0;
 			currlvl.innerHTML = 'Working on Level: '  + (level+1);
-			setTimeout(start, 2000);
+			setTimeout(start, between_game_interval);
 
 		} else {
 			consec_wins = 0;
 			currlvl.innerHTML = 'Working on Level: '  + (level+1);
 			msg.innerHTML = "How can you<br/> not remember<br/> one stinkin' dot?";
-			setTimeout(start, 2000);
+			setTimeout(start, between_game_interval);
 		}
 	}
 	 
