@@ -133,7 +133,7 @@
 
 
 		
-		 
+		
 		msg.innerHTML = '';
 
 		// set the game in SHOW mode (the computer is active...)
