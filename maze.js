@@ -109,7 +109,7 @@
 		images[RIGHT] = rightImg;
 		images[BOTTOM] = bottomImg;
 		images[LEFT] = leftImg;
-		interval_in_milliseconds = 500;
+		interval_in_milliseconds = 1000;
 		click_cnt_msg = document.getElementById('click_count_message');
 	}
 
